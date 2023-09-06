@@ -205,15 +205,19 @@ function App() {
 
   return (
     <>
-      <div style={{width: 1200, height: 600, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: 2}}>
+      <div style={{width: 1200, height: 600, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
         <Map config={config}  />
         {
           config.stopEnemies && <Question actualLevel={actualLevel} question={questions[actualLevel].questions[actualQuestion]} answered={answered} handleAnswer={handleAnswer} />
         }
         {
-          config.gameOver && <button onClick={retry} style={{width: 200, height: 50, border: '1px solid gray', color: 'white', display:'flex', justifyContent: 'center', alignItems: 'center', fontSize: 18, marginTop: 50}} >
-          RETRY
-      </button>
+          config.gameOver && 
+          <>
+            <h2 style={{color: 'red'}}><u>GAME OVER</u></h2>
+            <button onClick={retry} style={{width: 200, height: 50, border: '1px solid gray', color: 'white', display:'flex', justifyContent: 'center', alignItems: 'center', fontSize: 18, marginTop: 50}} >
+                RETRY
+            </button>
+          </>
         }
       </div>
     </>
