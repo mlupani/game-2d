@@ -1,24 +1,467 @@
 {
     "0": {
-        "questions": [{
-            "id": 1,
-            "question": "What is the capital of France?",
-            "answers": {
-                "a": "Paris",
-                "b": "London",
-                "c": "New York"
+        "questions":
+        [
+            {
+                "id": 1,
+                "question": "I came _____ America.",
+                "answers": {
+                    "a": "from",
+                    "b": "at",
+                    "c": "in",
+                    "d": "on"
+                },
+                "correctAnswer": "a"
             },
-            "correctAnswer": "a"
-        },
-        {
-            "id": 2,
-            "question": "What is the capital of England?",
-            "answers": {
-                "a": "Paris",
-                "b": "London",
-                "c": "New York"
+            {
+                "id": 2,
+                "question": "I ____ cold.",
+                "answers": {
+                    "a": "am",
+                    "b": "have",
+                    "c": "had",
+                    "d": "is"
+                },
+                "correctAnswer": "a"
             },
-            "correctAnswer": "b"
-        }]
+            {
+                "id": 3,
+                "question": " ________ car is very old fashioned.",
+                "answers": {
+                    "a": "Fatima’s ",
+                    "b": "Fatima is",
+                    "c": "Fatimas",
+                    "d": "Fatimas’"
+                },
+                "correctAnswer": "a"
+            },
+            {
+                "id": 4,
+                "question": " I speak English but he_______.",
+                "answers": {
+                    "a": "doesn’t speaks",
+                    "b": "doesn’t speak",
+                    "c": "speaks",
+                    "d": "don’t speak"
+                },
+                "correctAnswer": "b"
+            },
+            {
+                "id": 5,
+                "question": "Nowadays everyone ______ internet.",
+                "answers": {
+                    "a": "had used",
+                    "b": "uses",
+                    "c": "used",
+                    "d": "use"
+                },
+                "correctAnswer": "b"
+            },
+            {
+                "id": 6,
+                "question": "______ there anybody in the room?",
+                "answers": {
+                    "a": "Are",
+                    "b": "is",
+                    "c": "am",
+                    "d": "if"
+                },
+                "correctAnswer": "b"
+            },
+            {
+                "id": 7,
+                "question": "How many siblings ________?",
+                "answers": {
+                    "a": "do you have",
+                    "b": "have you gotten",
+                    "c": "did you had",
+                    "d": "both (A, B) "
+                },
+                "correctAnswer": "d"
+            },
+            {
+                "id": 8,
+                "question": "What___ you doing?",
+                "answers": {
+                    "a": "is",
+                    "b": "are",
+                    "c": "am",
+                    "d": "if"
+                },
+                "correctAnswer": "b"
+            }
+        ]
+    },
+    "1": {
+        "questions":
+        [
+            {
+                "id": 1,
+                "question": "Which book is ______?",
+                "answers": {
+                    "a": "your",
+                    "b": "your’s",
+                    "c": "yours",
+                    "d": "your is"
+                },
+                "correctAnswer": "c"
+            },
+            {
+                "id": 2,
+                "question": "She is____ home.",
+                "answers": {
+                    "a": "at",
+                    "b": "in",
+                    "c": "on",
+                    "d": "from"
+                },
+                "correctAnswer": "a"
+            },
+            {
+                "id": 3,
+                "question": "She eats___ apple.",
+                "answers": {
+                    "a": "a",
+                    "b": "an",
+                    "c": "the",
+                    "d": "two"
+                },
+                "correctAnswer": "b"
+            },
+            {
+                "id": 4,
+                "question": " Why _____ she come late?",
+                "answers": {
+                    "a": "do",
+                    "b": "does",
+                    "c": "is",
+                    "d": "are"
+                },
+                "correctAnswer": "b"
+            },
+            {
+                "id": 5,
+                "question": "Nowadays everyone ______ internet.",
+                "answers": {
+                    "a": "had used",
+                    "b": "uses",
+                    "c": "used",
+                    "d": "use"
+                },
+                "correctAnswer": "b"
+            },
+            {
+                "id": 6,
+                "question": " I_____ a pen.",
+                "answers": {
+                    "a": "has had",
+                    "b": "have",
+                    "c": "has",
+                    "d": "want"
+                },
+                "correctAnswer": "b"
+            },
+            {
+                "id": 7,
+                "question": "These ____ books.",
+                "answers": {
+                    "a": "are",
+                    "b": "is",
+                    "c": "an",
+                    "d": "is a"
+                },
+                "correctAnswer": "a"
+            },
+            {
+                "id": 8,
+                "question": "The superlative form of far is_______.",
+                "answers": {
+                    "a": "farthest",
+                    "b": "farther",
+                    "c": "more far",
+                    "d": "most far"
+                },
+                "correctAnswer": "a"
+            }
+        ]
+    },
+    "2": {
+        "questions":
+        [
+            {
+                "id": 1,
+                "question": "This girl is____ beautiful than her.",
+                "answers": {
+                    "a": "more",
+                    "b": "most",
+                    "c": "very",
+                    "d": "beautifully"
+                },
+                "correctAnswer": "a"
+            },
+            {
+                "id": 2,
+                "question": "She is____ home.",
+                "answers": {
+                    "a": "at",
+                    "b": "in",
+                    "c": "on",
+                    "d": "from"
+                },
+                "correctAnswer": "b"
+            },
+            {
+                "id": 3,
+                "question": "He is interested____ learning.",
+                "answers": {
+                    "a": "on",
+                    "b": "in",
+                    "c": "from",
+                    "d": "at"
+                },
+                "correctAnswer": "a"
+            },
+            {
+                "id": 4,
+                "question": " Why _____ she come late?",
+                "answers": {
+                    "a": "do",
+                    "b": "does",
+                    "c": "is",
+                    "d": "are"
+                },
+                "correctAnswer": "b"
+            },
+            {
+                "id": 5,
+                "question": "Where_____ John and Marry yesterday?",
+                "answers": {
+                    "a": "was",
+                    "b": "were",
+                    "c": "had been",
+                    "d": "had"
+                },
+                "correctAnswer": "b"
+            },
+            {
+                "id": 6,
+                "question": "How long__________ learning English?",
+                "answers": {
+                    "a": "have you been",
+                    "b": "are you",
+                    "c": "did you",
+                    "d": "had you"
+                },
+                "correctAnswer": "a"
+            },
+            {
+                "id": 7,
+                "question": "Are you _______ than her?",
+                "answers": {
+                    "a": "more tall",
+                    "b": "taller",
+                    "c": "most tall",
+                    "d": "tallest"
+                },
+                "correctAnswer": "b"
+            },
+            {
+                "id": 8,
+                "question": "You______ see a doctor.",
+                "answers": {
+                    "a": "should",
+                    "b": "have to",
+                    "c": "must",
+                    "d": "all of them"
+                },
+                "correctAnswer": "d"
+            }
+        ]
+    },
+    "3": {
+        "questions":
+        [
+            {
+                "id": 1,
+                "question": "After this you should drive__________.",
+                "answers": {
+                    "a": "more carefully",
+                    "b": "more careful",
+                    "c": "carefully",
+                    "d": "carefull"
+                },
+                "correctAnswer": "a"
+            },
+            {
+                "id": 2,
+                "question": "Do you go to school?  _________",
+                "answers": {
+                    "a": "yes, I go",
+                    "b": "yes, I do",
+                    "c": "yes, I am going",
+                    "d": "yes, I am"
+                },
+                "correctAnswer": "a"
+            },
+            {
+                "id": 3,
+                "question": "He is interested____ learning.",
+                "answers": {
+                    "a": "on",
+                    "b": "in",
+                    "c": "from",
+                    "d": "at"
+                },
+                "correctAnswer": "b"
+            },
+            {
+                "id": 4,
+                "question": "My birthday is_____ June.",
+                "answers": {
+                    "a": "in",
+                    "b": "on",
+                    "c": "at",
+                    "d": "from"
+                },
+                "correctAnswer": "b"
+            },
+            {
+                "id": 5,
+                "question": "Where_____ John and Marry yesterday?",
+                "answers": {
+                    "a": "was",
+                    "b": "were",
+                    "c": "had been",
+                    "d": "had"
+                },
+                "correctAnswer": "b"
+            },
+            {
+                "id": 6,
+                "question": "My birthday is_____ 18 June.",
+                "answers": {
+                    "a": "at",
+                    "b": "on",
+                    "c": "in",
+                    "d": "from"
+                },
+                "correctAnswer": "a"
+            },
+            {
+                "id": 7,
+                "question": "Do you work_____night?",
+                "answers": {
+                    "a": "at",
+                    "b": "in",
+                    "c": "on",
+                    "d": "for"
+                },
+                "correctAnswer": "a"
+            },
+            {
+                "id": 8,
+                "question": " I_____ a horse.",
+                "answers": {
+                    "a": "ride",
+                    "b": "drive",
+                    "c": "fly",
+                    "d": "none of them"
+                },
+                "correctAnswer": "a"
+            }
+        ]
+    },
+    "4": {
+        "questions":
+        [
+            {
+                "id": 1,
+                "question": " There_____ many people in the office.",
+                "answers": {
+                    "a": "are",
+                    "b": "is",
+                    "c": "am",
+                    "d": "have"
+                },
+                "correctAnswer": "a"
+            },
+            {
+                "id": 2,
+                "question": "She______ the dishes yesterday.",
+                "answers": {
+                    "a": "washes",
+                    "b": "washed",
+                    "c": "wash",
+                    "d": "has have"
+                },
+                "correctAnswer": "b"
+            },
+            {
+                "id": 3,
+                "question": "_____ do you work?",
+                "answers": {
+                    "a": "what",
+                    "b": "where",
+                    "c": "which",
+                    "d": "whom"
+                },
+                "correctAnswer": "b"
+            },
+            {
+                "id": 4,
+                "question": "______do you work for?",
+                "answers": {
+                    "a": "which",
+                    "b": "whom",
+                    "c": "where",
+                    "d": "why"
+                },
+                "correctAnswer": "c"
+            },
+            {
+                "id": 5,
+                "question": "Where_____ John and Marry yesterday?",
+                "answers": {
+                    "a": "was",
+                    "b": "were",
+                    "c": "had been",
+                    "d": "had"
+                },
+                "correctAnswer": "b"
+            },
+            {
+                "id": 6,
+                "question": " __________ I went to hospital.",
+                "answers": {
+                    "a": "in friday",
+                    "b": "on Friday ",
+                    "c": "in Friday",
+                    "d": "on friday"
+                },
+                "correctAnswer": "b"
+            },
+            {
+                "id": 7,
+                "question": "Do you work_____night?",
+                "answers": {
+                    "a": "at",
+                    "b": "in",
+                    "c": "on",
+                    "d": "for"
+                },
+                "correctAnswer": "a"
+            },
+            {
+                "id": 8,
+                "question": "He doesn’t have_____ friend.",
+                "answers": {
+                    "a": "some",
+                    "b": "any",
+                    "c": "every",
+                    "d": "anybody"
+                },
+                "correctAnswer": "b"
+            }
+        ]
     }
 }
