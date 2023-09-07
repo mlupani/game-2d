@@ -84,17 +84,17 @@ function App() {
           ...config,
           enemies: config.enemies,
           stopEnemies: false,
-          actualLevel: actualQuestion === 8 ? actualLevel + 1 : actualLevel,
+          actualLevel: actualQuestion === 7 ? actualLevel + 1 : actualLevel,
           warrior: {
             ...config.warrior,
             attack: false
           }
         })
+        if(actualQuestion === 7){
+          setActualQuestion(0)
+          setActualLevel(actualLevel + 1)
+        }
       }, 2000)
-      if(actualQuestion === 8){
-        setActualQuestion(0)
-        setActualLevel(actualLevel + 1)
-      }
     }
     else{
       setAnswered(false)
@@ -195,8 +195,6 @@ function App() {
     };
   },[config.stopEnemies, config.warrior.attack, answered, config.warrior.dead, config.gameOver, config.startGame, config.actualLevel])
 
-  console.log(config.startGame)
-
   if(!config.startGame)
     return (
       <div style={{width: 1200, height: 600, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: 2, color: 'white'}}>
@@ -204,6 +202,7 @@ function App() {
       </div>
     )
 
+    console.log(questions)
 
   return (
     <>

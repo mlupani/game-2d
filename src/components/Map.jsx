@@ -61,8 +61,8 @@ const Map = (props) => {
       context.clearRect(0, 0, canvas.width, canvas.height)
       for(let i = 0; i < 7; i++){
         if(props.config.actualLevel === 0){
-          context.drawImage(wallImg5, 0, 0, 72, 72, 72*i, 0, 72, 72)
-          context.drawImage(wallImg5, 0, 0, 72, 72, 72*i, 72, 72, 72)
+          context.drawImage(wallImg, 0, 0, 72, 72, 72*i, 0, 72, 72)
+          context.drawImage(wallImg, 0, 0, 72, 72, 72*i, 72, 72, 72)
         }
 
         if(props.config.actualLevel === 1){
