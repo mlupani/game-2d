@@ -15,6 +15,7 @@ const INITIAL_CONFIG = {
   gameOver: false,
   enemies_x: 100,
   startGame: false,
+  actualLevel: 0,
   warrior: {
     width: 64,
     height: 80,
@@ -83,6 +84,7 @@ function App() {
           ...config,
           enemies: config.enemies,
           stopEnemies: false,
+          actualLevel: actualQuestion === 8 ? actualLevel + 1 : actualLevel,
           warrior: {
             ...config.warrior,
             attack: false
@@ -191,7 +193,7 @@ function App() {
     return () => {
       clearInterval(timer);
     };
-  },[config.stopEnemies, config.warrior.attack, answered, config.warrior.dead, config.gameOver, config.startGame])
+  },[config.stopEnemies, config.warrior.attack, answered, config.warrior.dead, config.gameOver, config.startGame, config.actualLevel])
 
   console.log(config.startGame)
 
