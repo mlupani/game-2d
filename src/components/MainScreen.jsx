@@ -1,7 +1,7 @@
 const MainScreen = (props) => {
 
-    const handleStart = () => {
-        props.setConfig({...props.config, startGame: true})
+    const handleStartIntro = () => {
+        props.setConfig({...props.config, intro: true})
     }
 
   return (
@@ -13,7 +13,7 @@ const MainScreen = (props) => {
         <h3 style={{color: 'white', textAlign: 'center', width: 500}}>Answer the questions and escape from the castle infected with zombies that will kill you if you answer wrong!</h3>
         <h3 style={{color: 'white'}}>The game consists of 5 levels with 8 questions each</h3>
         <h3 style={{color: 'white'}}>Good Luck!</h3>
-        <button onClick={handleStart} style={{width: 200, height: 50, border: '1px solid gray', color: 'white', display:'flex', justifyContent: 'center', alignItems: 'center', fontSize: 18}} >
+        <button onClick={handleStartIntro} style={{width: 200, height: 50, border: '1px solid gray', color: 'white', display:'flex', justifyContent: 'center', alignItems: 'center', fontSize: 18}} >
             START GAME
         </button>
     </div>

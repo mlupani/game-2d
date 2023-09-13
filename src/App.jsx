@@ -4,6 +4,7 @@ import Map from './components/map'
 import Question from './components/Question';
 import questions from './data/data.json'
 import MainScreen from './components/MainScreen';
+import Intro from './components/Intro';
 
 let enemies_array = []
 let count_enemies = 1;
@@ -16,6 +17,7 @@ const INITIAL_CONFIG = {
   enemies_x: 100,
   startGame: false,
   actualLevel: 0,
+  intro: false,
   warrior: {
     width: 64,
     height: 80,
@@ -195,14 +197,19 @@ function App() {
     };
   },[config.stopEnemies, config.warrior.attack, answered, config.warrior.dead, config.gameOver, config.startGame, config.actualLevel])
 
-  if(!config.startGame)
+  if(!config.startGame && !config.intro)
     return (
       <div style={{width: 1200, height: 600, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: 2, color: 'white'}}>
         <MainScreen config={config} setConfig={setConfig} />
       </div>
     )
 
-    console.log(questions)
+  if(!config.startGame && config.intro)
+    return (
+      <div style={{width: 1200, height: 600, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: 2, color: 'white'}}>
+        <Intro config={config} setConfig={setConfig} />
+      </div>
+    )
 
   return (
     <>
