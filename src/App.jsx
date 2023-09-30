@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react'
 import './App.css'
-import Map from './components/map'
+import Level from './components/Level'
 import Question from './components/Question';
 import questions from './data/data.json'
 import MainScreen from './components/MainScreen';
 import Intro from './components/Intro';
+import Map from './components/Map';
 
 let enemies_array = []
 let count_enemies = 1;
@@ -15,14 +16,17 @@ const INITIAL_CONFIG = {
   stopWarrior: false,
   gameOver: false,
   enemies_x: 100,
-  startGame: false,
+  startGame: true,
   actualLevel: 0,
+  nextLevel: 1,
   intro: false,
+  advanceLevel: true,
+  firstLevel: true,
   warrior: {
     width: 64,
     height: 80,
     x: 0,
-    y: 90,
+    y: 72,
     attack: false,
     currentFrame:0,
     totalFrames:3,
@@ -31,14 +35,36 @@ const INITIAL_CONFIG = {
     speed: 0.1,
     dead: false
   },
-  enemies: Object.entries(questions).map(([Level, questions]) => {
+  levelInMap: {
+    [0] : {
+      x: 0,
+      y: 80,
+    },
+    [1]: {
+      x: 45,
+      y: 55,
+    },
+    [2]: {
+      x: 130,
+      y: 0,
+    },
+    [3]: {
+      x: 175,
+      y: 65,
+    },
+    [4]: {
+      x: 230,
+      y: 40,
+    },
+  },
+  enemies: Object.entries(questions).map(([level, questions]) => {
     return questions.questions.map((question, indexQuestion) => {
       const enemies = 
       {
         width: 32,
         height: 32,
         x: ((count_enemies++) * 100) + 100,
-        y: 125,
+        y: 110,
         currentFrame: 0,
         totalFrames: 3,
         dead: false,
@@ -86,15 +112,25 @@ function App() {
           ...config,
           enemies: config.enemies,
           stopEnemies: false,
-          actualLevel: actualQuestion === 7 ? actualLevel + 1 : actualLevel,
+          firstLevel: false,
+          actualLevel: actualQuestion === 0 ? actualLevel + 1 : actualLevel,
+          nextLevel: actualQuestion === 0 ? actualLevel + 2 : actualLevel + 1,
           warrior: {
             ...config.warrior,
             attack: false
+
           }
         })
-        if(actualQuestion === 7){
+        if(actualQuestion === 0){
           setActualQuestion(0)
           setActualLevel(actualLevel + 1)
+          setConfig({
+            ...config,
+            advanceLevel: true,
+            nextLevel: actualLevel + 1,
+            stopEnemies: true,
+            actualLevel: actualLevel,
+          })
         }
       }, 2000)
     }
@@ -129,73 +165,75 @@ function App() {
     let dead = config.warrior.dead
     let y = config.warrior.y
     let warriorCurrentFrame = config.warrior.currentFrame
-    if(!config.startGame) return ;
-    const timer = setInterval(() => {
-      //MOVE ENEMIES
-      const newEnemies = config.enemies.map((enemy) => {
-        if (enemy.x === 80 || stop){
-          stop = true
-          if(enemy.dead){
-            return {
-              ...enemy,
-              explotionCurrentFrames: enemy.explotionCurrentFrames >= enemy.totalExplotionFrames ? enemy.explotionCurrentFrames = 0 : enemy.explotionCurrentFrames += 0.1
-            }
-          }else{
-            return {
-              ...enemy,
+    let timer = null
+    if(config.startGame && !config.advanceLevel){
+      timer = setInterval(() => {
+        //MOVE ENEMIES
+        const newEnemies = config.enemies.map((enemy) => {
+          if (enemy.x === 80 || stop){
+            stop = true
+            if(enemy.dead){
+              return {
+                ...enemy,
+                explotionCurrentFrames: enemy.explotionCurrentFrames >= enemy.totalExplotionFrames ? enemy.explotionCurrentFrames = 0 : enemy.explotionCurrentFrames += 0.1
+              }
+            }else{
+              return {
+                ...enemy,
+              }
             }
           }
+          return {
+            ...enemy,
+            x: enemy.x--,
+            currentFrame: enemy.currentFrame >= enemy.totalFrames ? enemy.currentFrame = 0 : enemy.currentFrame += 0.1
+          }
+        })
+        if(config.warrior.attack){
+          width = 96
+          if(warriorCurrentFrame >= config.warrior.totalFramesAttack){
+            warriorCurrentFrame = 0
+            attack = false;
+          }
+          else
+            warriorCurrentFrame += config.warrior.speed
         }
-        return {
-          ...enemy,
-          x: enemy.x--,
-          currentFrame: enemy.currentFrame >= enemy.totalFrames ? enemy.currentFrame = 0 : enemy.currentFrame += 0.1
+        else if(config.warrior.dead){
+          width = 80
+          y = 102;
+          if(warriorCurrentFrame >= config.warrior.totalFramesDead){
+            warriorCurrentFrame = config.warrior.totalFramesDead
+            dead = true;
+          }
+          else
+            warriorCurrentFrame += config.warrior.speed
         }
-      })
-      if(config.warrior.attack){
-        width = 96
-        if(warriorCurrentFrame >= config.warrior.totalFramesAttack){
-          warriorCurrentFrame = 0
-          attack = false;
-        }
-        else
+        else{
+          width = 64
+          if(warriorCurrentFrame >= config.warrior.totalFrames)
+            warriorCurrentFrame = 0
+          else
           warriorCurrentFrame += config.warrior.speed
-      }
-      else if(config.warrior.dead){
-        width = 80
-        y = 102;
-        if(warriorCurrentFrame >= config.warrior.totalFramesDead){
-          warriorCurrentFrame = config.warrior.totalFramesDead
-          dead = true;
         }
-        else
-          warriorCurrentFrame += config.warrior.speed
-      }
-      else{
-        width = 64
-        if(warriorCurrentFrame >= config.warrior.totalFrames)
-          warriorCurrentFrame = 0
-        else
-        warriorCurrentFrame += config.warrior.speed
-      }
-      setConfig({
-        ...config,
-        stopEnemies: stop,
-        enemies: newEnemies,
-        warrior: {
-          ...config.warrior,
-          currentFrame: warriorCurrentFrame,
-          attack,
-          width,
-          dead,
-          y
-        }
-      })
-    }, 1000 / config.fps)
+        setConfig({
+          ...config,
+          stopEnemies: stop,
+          enemies: newEnemies,
+          warrior: {
+            ...config.warrior,
+            currentFrame: warriorCurrentFrame,
+            attack,
+            width,
+            dead,
+            y
+          }
+        })
+      }, 1000 / config.fps)
+    }
     return () => {
       clearInterval(timer);
     };
-  },[config.stopEnemies, config.warrior.attack, answered, config.warrior.dead, config.gameOver, config.startGame, config.actualLevel])
+  },[config.stopEnemies, config.warrior.attack, answered, config.warrior.dead, config.gameOver, config.startGame, config.actualLevel, config.advanceLevel])
 
   if(!config.startGame && !config.intro)
     return (
@@ -211,10 +249,16 @@ function App() {
       </div>
     )
 
+  if(config.startGame && !config.intro && config.advanceLevel){
+    return (
+      <Map config={config} setConfig={setConfig} />
+    )
+  }
+
   return (
     <>
       <div style={{width: 1200, height: 600, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
-        <Map config={config}  />
+        <Level config={config}  />
         {
           config.stopEnemies && <Question actualLevel={actualLevel} question={questions[actualLevel].questions[actualQuestion]} answered={answered} handleAnswer={handleAnswer} />
         }
