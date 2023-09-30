@@ -16,7 +16,7 @@ const INITIAL_CONFIG = {
   stopWarrior: false,
   gameOver: false,
   enemies_x: 100,
-  startGame: true,
+  startGame: false,
   actualLevel: 0,
   nextLevel: 1,
   intro: false,
