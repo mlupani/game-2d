@@ -1,19 +1,15 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 const images_url = [
     'assets/sprites/map.jpg',
-    'assets/sprites/warrior-2.png'
+    'assets/sprites/warrior-2.png',
+    'assets/sprites/warrior-run.png'
 ]
 
 const Map = ({config, setConfig}) => {
 
   const canvasRef = useRef(null);
   let imagesLoaded = []
-
-  const map = new Image();
-  const warrior = new Image();
-  map.src = 'assets/sprites/map.jpg';
-  warrior.src = 'assets/sprites/warrior-2.png';
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -50,14 +46,18 @@ const Map = ({config, setConfig}) => {
    const moveWarrior = () => {
         const canvas = canvasRef.current
         const context = canvas.getContext('2d')
+        const map = imagesLoaded[0]
         const warrior = imagesLoaded[1]
+        const warrior_run = imagesLoaded[2]
+        let frame_run = 0
         const levelsInMap = Object.values(config.levelInMap);
         let x = levelsInMap[config.actualLevel].x;
         let y = levelsInMap[config.actualLevel].y;
         let timer = null
         timer = setInterval(() => {
+            if(frame_run === 8) frame_run = 0
             context.drawImage(map, 0, 0, 1400, 700, 0, 0, canvas.width, canvas.height)
-            context.drawImage(warrior, 0, 0, 64, 64, x, y, 40, 40)
+            context.drawImage(warrior_run, frame_run * 80, 0, 80, 64, x, y, 40, 40)
             if(x !== levelsInMap[config.nextLevel].x){
                 x++
             }
@@ -68,6 +68,9 @@ const Map = ({config, setConfig}) => {
                     y++
             }
             if(x === levelsInMap[config.nextLevel].x && y === levelsInMap[config.nextLevel].y){
+                context.clearRect(0, 0, canvas.width, canvas.height)
+                context.drawImage(map, 0, 0, 1400, 700, 0, 0, canvas.width, canvas.height)
+                context.drawImage(warrior, 0 * 64, 0, 80, 64, x, y, 40, 40)
                 clearInterval(timer)
                 setTimeout(() => {
                     setConfig({
@@ -77,9 +80,11 @@ const Map = ({config, setConfig}) => {
                       stopEnemies: false,
                       actualLevel: config.actualLevel + 1,
                       nextLevel: config.nextLevel + 1,
+                      winGame: config.actualLevel === 4 ? true : false,
                     })
                   }, 2000)
             }
+            frame_run++
         }, 2000 / 50)
    }
   return (

@@ -6,14 +6,12 @@ const Level = (props) => {
   const [warriorImg, setWarriorImg] = useState(null);
   const [enemiesImg, setEnemiesImg] = useState(null);
   const [explotionImg, setExplotionImg] = useState(null);
-  const [wallImg, setWallImg] = useState(null);
-  const [wallImg2, setWallImg2] = useState(null);
-  const [wallImg3, setWallImg3] = useState(null);
-  const [wallImg4, setWallImg4] = useState(null);
-  const [wallImg5, setWallImg5] = useState(null);
   const [worldImg, setWorldImg] = useState(null);
   const [skyImg, setSkyImg] = useState(null);
   const [waterImg, setWaterImg] = useState(null);
+  const [sandImg, setSandImg] = useState(null);
+  const [nightImg, setNightImg] = useState(null);
+  const [atardecerImg, setAtardecerImg] = useState(null);
 
   useEffect(() => {
     const warriorImg = new Image();
@@ -35,26 +33,6 @@ const Level = (props) => {
     explotionImg.src = 'assets/sprites/explotion.png';
     setExplotionImg(explotionImg);
 
-    const wallImg = new Image();
-    wallImg.src = 'assets/sprites/wall.png';
-    setWallImg(wallImg);
-
-    const wallImg2 = new Image();
-    wallImg2.src = 'assets/sprites/wall-2.png';
-    setWallImg2(wallImg2);
-
-    const wallImg3 = new Image();
-    wallImg3.src = 'assets/sprites/wall-3.png';
-    setWallImg3(wallImg3);
-
-    const wallImg4 = new Image();
-    wallImg4.src = 'assets/sprites/wall-4.png';
-    setWallImg4(wallImg4);
-
-    const wallImg5 = new Image();
-    wallImg5.src = 'assets/sprites/wall-5.png';
-    setWallImg5(wallImg5);
-
     const world = new Image();
     world.src = 'assets/sprites/world_tiles.png';
     setWorldImg(world);
@@ -67,6 +45,17 @@ const Level = (props) => {
     waterImg.src = 'assets/sprites/water.png';
     setWaterImg(waterImg);
 
+    const sandImg = new Image();
+    sandImg.src = 'assets/sprites/tilemap_platforms.png';
+    setSandImg(sandImg);
+
+    const nightImg = new Image();
+    nightImg.src = 'assets/sprites/noche.png';
+    setNightImg(nightImg);
+
+    const atardecerImg = new Image();
+    atardecerImg.src = 'assets/sprites/atardecer.png';
+    setAtardecerImg(atardecerImg);
 
   }, [])
 
@@ -99,18 +88,18 @@ const Level = (props) => {
         }
 
         if(props.config.actualLevel === 2){
-          context.drawImage(wallImg3, 0, 0, 72, 72, 72*i, 0, 72, 72)
-          context.drawImage(wallImg3, 0, 0, 72, 72, 72*i, 72, 72, 72)
+          context.drawImage(skyImg, fromx, fromy, 10, 10, placex, 0, width2, 135)
+          context.drawImage(sandImg, 350, fromy, 300, 15, -35 + 45 * i, placey, 300, height2 + 5)
         }
 
         if(props.config.actualLevel === 3){
-          context.drawImage(wallImg4, 0, 0, 72, 72, 72*i, 0, 72, 72)
-          context.drawImage(wallImg4, 0, 0, 72, 72, 72*i, 72, 72, 72)
+          context.drawImage(atardecerImg, 0, 0, 600, 130, 0, 0, 600, 130)
+          context.drawImage(worldImg, fromx, fromy, towidth, toheight, placex, placey, width2, height2)
         }
 
         if(props.config.actualLevel === 4){
-          context.drawImage(wallImg5, 0, 0, 72, 72, 72*i, 0, 72, 72)
-          context.drawImage(wallImg5, 0, 0, 72, 72, 72*i, 72, 72, 72)
+          context.drawImage(nightImg, 0, 0, 600, 130, 0, 0, 600, 130)
+          context.drawImage(waterImg, 32, fromy, 16, 16, placex, placey - 5, width2, height2 + 5)
         }
 
       }

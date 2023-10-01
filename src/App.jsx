@@ -6,6 +6,7 @@ import questions from './data/data.json'
 import MainScreen from './components/MainScreen';
 import Intro from './components/Intro';
 import Map from './components/Map';
+import WinGame from './components/winGame';
 
 let enemies_array = []
 let count_enemies = 1;
@@ -22,6 +23,7 @@ const INITIAL_CONFIG = {
   intro: false,
   advanceLevel: true,
   firstLevel: true,
+  winGame: false,
   warrior: {
     width: 64,
     height: 80,
@@ -54,6 +56,10 @@ const INITIAL_CONFIG = {
     },
     [4]: {
       x: 230,
+      y: 40,
+    },
+    [5]: {
+      x: 300,
       y: 40,
     },
   },
@@ -234,6 +240,11 @@ function App() {
       clearInterval(timer);
     };
   },[config.stopEnemies, config.warrior.attack, answered, config.warrior.dead, config.gameOver, config.startGame, config.actualLevel, config.advanceLevel])
+
+
+  if(config.winGame){
+    return <WinGame/>
+  }
 
   if(!config.startGame && !config.intro)
     return (
