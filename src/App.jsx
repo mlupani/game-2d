@@ -119,15 +119,15 @@ function App() {
           enemies: config.enemies,
           stopEnemies: false,
           firstLevel: false,
-          actualLevel: actualQuestion === 0 ? actualLevel + 1 : actualLevel,
-          nextLevel: actualQuestion === 0 ? actualLevel + 2 : actualLevel + 1,
+          actualLevel: actualQuestion === 7 ? actualLevel + 1 : actualLevel,
+          nextLevel: actualQuestion === 7 ? actualLevel + 2 : actualLevel + 1,
           warrior: {
             ...config.warrior,
             attack: false
 
           }
         })
-        if(actualQuestion === 0){
+        if(actualQuestion === 7){
           setActualQuestion(0)
           setActualLevel(actualLevel + 1)
           setConfig({
